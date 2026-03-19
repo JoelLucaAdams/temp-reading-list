@@ -30,7 +30,7 @@ jobs:
                 TAGS="${{ steps.parser.outputs.parsed_tags }}"
                 CONTENT="${{ steps.parser.outputs.parsed_content }}"
 
-                CAT <<EOF > "literature/$FILEPATH.md"
+                cat <<EOF > "literature/$FILEPATH.md"
                 ---
                 tags: $TAGS
                 doi: $DOI
@@ -38,7 +38,6 @@ jobs:
                 ---
                 
                 $CONTENT
-
                 EOF
             
             - name: Create PR
