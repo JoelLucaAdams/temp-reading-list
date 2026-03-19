@@ -1,0 +1,46 @@
+name: Suggest literature
+description: Suggest a paper, book, or other resource to add to the reading list.
+title: "Suggest: "
+labels: ["suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing to the Fusion CDT Community Reading List!
+        Please fill in as much detail as you can below.
+
+  - type: input
+    id: doi
+    attributes:
+      label: DOI
+      description: The DOI of the paper or resource, if available.
+      placeholder: "e.g. 10.1063/1.2178779"
+    validations:
+      required: false
+
+  - type: input
+    id: filepath
+    attributes:
+      label: Location and Filename
+      description: Where in the reading list should this live and what should it be called?
+      placeholder: "e.g. plasma/MCF/<AUTHOR><YEAR><SHORT-TITLE>"
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags (e.g. existing tags or new tags).
+      placeholder: "e.g. ICF, diagnostics, PIC"
+    validations:
+      required: false
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+      description: Why this is useful and some content you wish to highlight about the paper. Please use the Markdown format.
+      placeholder: "e.g. Essential review paper for anyone starting in machine learning."
+    validations:
+      required: true
