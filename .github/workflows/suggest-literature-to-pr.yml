@@ -30,12 +30,12 @@ jobs:
                 TAGS="${{ steps.parser.outputs.parsed_tags }}"
                 CONTENT="${{ steps.parser.outputs.parsed_content }}"
 
-                FULL_PATH="literature/${FILEPATH}.md"
+                FULL_PATH="docs/literature/${FILEPATH}.md"
                 # Extract the directory the file needs to go in and make the folder
                 DIR_PATH=$(dirname "$FULL_PATH")
                 mkdir -p "$DIR_PATH"
                 
-                cat <<EOF > "docs/literature/$FILEPATH.md"
+                cat <<EOF > "$FULL_PATH"
                 ---
                 tags: $TAGS
                 doi: $DOI
