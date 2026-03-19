@@ -1,6 +1,6 @@
 name: Suggest literature
 description: Suggest a paper, book, or other resource to add to the reading list.
-title: "Suggest: "
+title: "Add suggested literature: "
 labels: ["suggestion"]
 body:
   - type: markdown
