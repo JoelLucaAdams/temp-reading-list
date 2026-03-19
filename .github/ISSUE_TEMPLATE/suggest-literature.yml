@@ -23,7 +23,7 @@ body:
     attributes:
       label: Location and Filename
       description: Where in the reading list should this live and what should it be called? The article/paper filename should follow the format `<AUTHOR>_<YEAR>_<SHORT-TITLE>`
-      placeholder: "e.g. plasma/MCF/arber_2015_EPOCH"
+      placeholder: "e.g. plasma/MCF/abel_2013_multiscale-gyrokinetics"
     validations:
       required: true
 
