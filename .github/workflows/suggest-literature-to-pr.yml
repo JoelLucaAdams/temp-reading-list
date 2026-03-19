@@ -30,7 +30,7 @@ jobs:
                 TAGS="${{ steps.parser.outputs.parsed_tags }}"
                 CONTENT="${{ steps.parser.outputs.parsed_content }}"
 
-                cat <<EOF > "literature/$FILEPATH.md"
+                cat <<EOF > "docs/literature/$FILEPATH.md"
                 ---
                 tags: $TAGS
                 doi: $DOI
