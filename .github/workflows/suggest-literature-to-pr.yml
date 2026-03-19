@@ -49,7 +49,7 @@ jobs:
               uses: peter-evans/create-pull-request@v6
               with:
                 base: main
-                commit-message: "Add suggested literature: ${{ github.event.issue.title }}"
+                commit-message: "${{ github.event.issue.title }}"
                 title: "${{ github.event.issue.title }}"
                 body: |
                     Auto-generated PR for adding the suggested literature.
