@@ -5,7 +5,7 @@ on:
 
 jobs:
     create-contribution:
-        if: contains(github.event.issue.labels.*.name, 'suggestion')
+        if: contains(github.event.issue.labels.*.name, 'literature-suggestion')
         runs-on: ubuntu-latest
         permissions:
             contents: write

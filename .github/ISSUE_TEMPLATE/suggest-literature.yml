@@ -1,7 +1,7 @@
 name: Suggest literature
 description: Suggest a paper, book, or other resource to add to the reading list.
 title: "Add suggested literature: "
-labels: ["suggestion"]
+labels: ["literature-suggestion"]
 body:
   - type: markdown
     attributes:
@@ -22,8 +22,8 @@ body:
     id: filepath
     attributes:
       label: Location and Filename
-      description: Where in the reading list should this live and what should it be called?
-      placeholder: "e.g. plasma/MCF/<AUTHOR><YEAR><SHORT-TITLE>"
+      description: Where in the reading list should this live and what should it be called? The article/paper filename should follow the format `<AUTHOR>_<YEAR>_<SHORT-TITLE>`
+      placeholder: "e.g. plasma/MCF/arber_2015_EPOCH"
     validations:
       required: true
 
