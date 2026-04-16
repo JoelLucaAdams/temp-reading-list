@@ -1,33 +1,133 @@
-name: Edit existing literature entry
-description: Propose a correction or improvement to an existing literature entry.
-title: "Edit: "
-labels: ["edit-literature"]
+name: "Suggest literature"
+description: Suggest a paper, textbook, or lecture notes to add to the reading list.
+title: "Add suggested literature: "
+labels: ["literature-suggestion"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve the Fusion CDT Community Reading List!
+        Thanks for contributing to the Fusion CDT Community Reading List!
+        Please fill in as much detail as you can below.
 
-        Before filling in the form below, navigate to the page on the
-        [reading list site](https://fusion-cdt.github.io/community-reading-list/)
-        so you can view and copy its current content.
-
-  - type: textarea
-    id: description
+  - type: dropdown
+    id: literature_type
     attributes:
-      label: What needs changing?
-      description: Describe what is incorrect or could be improved, and why.
-      placeholder: "e.g. The summary is missing a key point about the gyrokinetic ordering."
+      label: Type of literature
+      description: What type of literature are you suggesting?
+      options:
+        - Paper (journal article or preprint)
+        - Textbook
+        - Lecture notes or slides
     validations:
       required: true
 
-  - type: textarea
-    id: proposed_content
+  # ===== Paper-specific fields =====
+  - type: input
+    id: doi
     attributes:
-      label: Proposed content
-      description: |
-        The new markdown content for the page body (everything after the opening `---` frontmatter block).
-        Copy the existing content from the page, make your changes, and paste the result here.
-      placeholder: "Your improved description here..."
+      label: DOI
+      description: The DOI of the paper, if available.
+      placeholder: "e.g. 10.1063/1.2178779"
+    validations:
+      required: false
+    visible: ["literature_type"]
+
+  # ===== Textbook-specific fields =====
+  - type: input
+    id: title_textbook
+    attributes:
+      label: Title
+      description: The full title of the textbook.
+      placeholder: "e.g. Plasma Physics and Fusion Energy"
     validations:
       required: true
+    visible: ["literature_type"]
+
+  - type: input
+    id: authors_textbook
+    attributes:
+      label: Authors
+      description: The author(s) of the textbook.
+      placeholder: "e.g. Jeffrey P. Freidberg"
+    validations:
+      required: true
+    visible: ["literature_type"]
+
+  - type: input
+    id: isbn
+    attributes:
+      label: ISBN
+      description: The ISBN of the textbook, if known.
+      placeholder: "e.g. 978-0-521-73317-5"
+    validations:
+      required: false
+    visible: ["literature_type"]
+
+  # ===== Lecture notes-specific fields =====
+  - type: input
+    id: title_lectures
+    attributes:
+      label: Title
+      description: The full title of the lecture notes or slides.
+      placeholder: "e.g. EPFL Plasma Physics: Introduction & Applications"
+    validations:
+      required: true
+    visible: ["literature_type"]
+
+  - type: input
+    id: authors_lectures
+    attributes:
+      label: Author(s) (optional)
+      description: The author(s) of the lecture notes or slides, if known.
+      placeholder: "e.g. Felix Parra Diaz"
+    validations:
+      required: false
+    visible: ["literature_type"]
+
+  # ===== Common URL field (for textbooks and lectures) =====
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: A link to the notes, slides, or textbook (e.g. publisher page or open-access version), if available.
+      placeholder: "e.g. https://example.com/notes.pdf"
+    validations:
+      required: false
+    visible: ["literature_type"]
+
+  # ===== Common fields for all types =====
+  - type: input
+    id: filepath
+    attributes:
+      label: Location and filename
+      description: Where in the reading list should this live and what should it be called? Follow the format `<AUTHOR>_<YEAR>_<SHORT-TITLE>`.
+      placeholder: "e.g. plasma/MCF/parra_2019_collisional-plasma-physics"
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags. See the existing tag list for canonical spellings.
+      placeholder: "e.g. MCF, Theory, Plasma Physics"
+    validations:
+      required: false
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+      description: Why this is useful and what you'd like to highlight. Please use Markdown and LaTeX for maths (e.g. `$\chi_e$`).
+      placeholder: "e.g. Excellent introductory textbook covering both plasma physics fundamentals and fusion engineering."
+    validations:
+      required: true
+
+  - type: input
+    id: contributor_name
+    attributes:
+      label: Your name (optional)
+      description: Your full name, to be credited as a contributor to this note.
+      placeholder: "e.g. Bailey Cook"
+    validations:
+      required: false
